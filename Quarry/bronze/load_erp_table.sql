@@ -1,0 +1,62 @@
+-- 1ST TABLE OF THE FILE 
+
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Dataset\\source_erp\\CUST_AZ12.csv"
+INTO TABLE bronze_CUST_AZ12 
+FIELDS TERMINATED  BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(
+    @CID,
+    @BDATE,
+    @GEN
+)
+SET
+    CID = NULLIF(@CID, ''),
+    BDATE = NULLIF(@BDATE, ''),
+    GEN = NULLIF(@GEN, '');
+
+-- CHECK THE  DATA IS LOADED OR NOT
+SELECT * FROM bronze_CUST_AZ12;
+
+-- 2ND TABLE OF THIS FILE 
+
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Dataset\\source_erp\\LOC_A101.csv"
+INTO TABLE bronze_LOC_A101
+FIELDS TERMINATED  BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(
+    @CID,
+    @CNTRY
+)
+SET
+    CID = NULLIF(@CID, ''),
+    CNTRY = NULLIF(@CNTRY, '');
+
+-- CHECK THE  DATA IS LOADED OR NOT
+SELECT * FROM bronze_LOC_A101;
+
+-- 3RD TABLE OFTHE FILE 
+
+LOAD DATA INFILE "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\Dataset\\source_erp\\PX_CAT_G1V2.csv"
+INTO TABLE bronze_PX_CAT_G1V2
+FIELDS TERMINATED  BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(
+    @ID,
+    @CAT,
+    @SUBCAT,
+    @MAINTENANCE
+)
+SET
+    ID = NULLIF(@ID, ''),
+    CAT = NULLIF(@CAT, ''),
+    SUBCAT = NULLIF(@SUBCAT, ''),
+    MAINTENANCE = NULLIF(@MAINTENANCE, '');
+
+-- CHECK THE  DATA IS LOADED OR NOT
+SELECT * FROM bronze_PX_CAT_G1V2;
